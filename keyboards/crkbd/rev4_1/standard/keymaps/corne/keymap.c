@@ -8,6 +8,13 @@ enum layers {
   _GNM
 };
 
+#define NO_AE UC(0x00E6)  // æ
+#define NO_OE UC(0x00F8)  // ø
+#define NO_AA UC(0x00E5)  // å
+#define NO_AE_UP UC(0x00C6)  // Æ
+#define NO_OE_UP UC(0x00D8)  // Ø
+#define NO_AA_UP UC(0x00C5)  // Å
+
 #define HOME_A LCTL_T(KC_A)
 #define HOME_S LALT_T(KC_S)
 #define HOME_D LSFT_T(KC_D)
@@ -78,3 +85,41 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       //`--------------------------'  `--------------------------'
   ),
 };
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (record->event.pressed) {
+        switch(keycode) {
+            case KC_A:
+                if (get_mods() & MOD_MASK_ALT) {
+                    if (get_mods() & MOD_MASK_SHIFT) {
+                        tap_code16(NO_AA_UP);
+                    } else {
+                        tap_code16(NO_AA);
+                    }
+                    return false;
+                }
+                break;
+            case KC_O:
+                if (get_mods() & MOD_MASK_ALT) {
+                    if (get_mods() & MOD_MASK_SHIFT) {
+                        tap_code16(NO_OE_UP);
+                    } else {
+                        tap_code16(NO_OE);
+                    }
+                    return false;
+                }
+                break;
+            case KC_QUOT:
+                if (get_mods() & MOD_MASK_ALT) {
+                    if (get_mods() & MOD_MASK_SHIFT) {
+                        tap_code16(NO_AE_UP);
+                    } else {
+                        tap_code16(NO_AE);
+                    }
+                    return false;
+                }
+                break;
+        }
+    }
+    return true;
+}
