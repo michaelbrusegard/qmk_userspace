@@ -88,13 +88,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
+        if ((keycode == KC_B || keycode == KC_N) && 
+            (get_mods() & MOD_MASK_CTRL) && 
+            (get_mods() & MOD_MASK_SHIFT) && 
+            (get_mods() & MOD_MASK_ALT) && 
+            (get_mods() & MOD_MASK_GUI)) {
+            reset_keyboard();
+            return false;
+        }
+
         switch(keycode) {
             case KC_A:
                 if (get_mods() & MOD_MASK_ALT) {
                     if (get_mods() & MOD_MASK_SHIFT) {
-                        tap_code16(NO_AA_UP);
+                        tap_code16(NO_AE_UP);
                     } else {
-                        tap_code16(NO_AA);
+                        tap_code16(NO_AE);
                     }
                     return false;
                 }
@@ -109,12 +118,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     return false;
                 }
                 break;
-            case KC_QUOT:
+            case KC_P:
                 if (get_mods() & MOD_MASK_ALT) {
                     if (get_mods() & MOD_MASK_SHIFT) {
-                        tap_code16(NO_AE_UP);
+                        tap_code16(NO_AA_UP);
                     } else {
-                        tap_code16(NO_AE);
+                        tap_code16(NO_AA);
                     }
                     return false;
                 }
@@ -122,4 +131,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
     }
     return true;
+}
+
+void keyboard_post_init_user(void) {
+    rgb_matrix_enable();
+    rgb_matrix_mode(RGB_MATRIX_SOLID_COLOR);
+    rgb_matrix_sethsv(0, 0, 255);
 }
