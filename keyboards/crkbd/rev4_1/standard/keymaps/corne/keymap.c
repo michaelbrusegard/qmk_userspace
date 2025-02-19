@@ -24,6 +24,12 @@ enum layers {
 #define HOME_L RALT_T(KC_L)
 #define HOME_SCLN RCTL_T(KC_SCLN)
 
+#define RS_EXLM RSFT(KC_1)
+#define RS_AT RSFT(KC_2)
+#define RS_HASH RSFT(KC_3)
+#define RS_DLR RSFT(KC_4)
+#define RS_PERC RSFT(KC_5)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BAS] = LAYOUT_split_3x6_3_ex2(
   //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
@@ -51,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_SPE] = LAYOUT_split_3x6_3_ex2(
   //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
-     KC_TRNS, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_TRNS,    KC_TRNS, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_TRNS,
+     KC_TRNS, RS_EXLM, RS_AT,   RS_HASH, RS_DLR,  RS_PERC, KC_TRNS,    KC_TRNS, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_TRNS,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
      KC_TRNS, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_TRNS,    KC_TRNS, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS, KC_TRNS,
   //|--------+--------+--------+--------+--------+--------+--------'  `--------+--------+--------+--------+--------+--------+--------|
@@ -88,10 +94,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
-        if ((keycode == KC_B || keycode == KC_N) && 
-            (get_mods() & MOD_MASK_CTRL) && 
-            (get_mods() & MOD_MASK_SHIFT) && 
-            (get_mods() & MOD_MASK_ALT) && 
+        if ((keycode == KC_B || keycode == KC_N) &&
+            (get_mods() & MOD_MASK_CTRL) &&
+            (get_mods() & MOD_MASK_SHIFT) &&
+            (get_mods() & MOD_MASK_ALT) &&
             (get_mods() & MOD_MASK_GUI)) {
             reset_keyboard();
             return false;

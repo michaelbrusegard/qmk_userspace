@@ -44,6 +44,7 @@ Alternatively, if you configured your build targets above, you can use `qmk user
 If you wish to point GitHub actions to a different repository, a different branch, or even a different keymap name, you can modify `.github/workflows/build_binaries.yml` to suit your needs.
 
 To override the `build` job, you can change the following parameters to use a different QMK repository or branch:
+
 ```
     with:
       qmk_repo: qmk/qmk_firmware
@@ -57,3 +58,11 @@ This can also be used to control which fork is used, though only upstream `qmk_f
 1. (First time only) `git submodule add https://github.com/qmk/qmk_firmware.git`
 1. (To update) `git submodule update --init --recursive`
 1. Commit your changes to your userspace repository
+
+## Commands
+
+Compile corne:
+
+```bash
+qmk compile -kb crkbd/rev4_1/standard -km corne
+```
