@@ -103,23 +103,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
         }
 
-        if (get_mods() & MOD_MASK_CTRL) {
-            switch(keycode) {
-                case KC_H:
-                    tap_code(KC_LEFT);
-                    return false;
-                case KC_J:
-                    tap_code(KC_DOWN);
-                    return false;
-                case KC_K:
-                    tap_code(KC_UP);
-                    return false;
-                case KC_L:
-                    tap_code(KC_RIGHT);
-                    return false;
-            }
-        }
-
         switch(keycode) {
             case KC_A:
                 if (get_mods() & MOD_MASK_ALT) {
