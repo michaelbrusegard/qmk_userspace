@@ -59,9 +59,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
      KC_TRNS, RS_EXLM, RS_AT,   RS_HASH, RS_DLR,  RS_PERC, KC_TRNS,    KC_TRNS, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_TRNS,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-     KC_TRNS, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_TRNS,    KC_TRNS, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS, KC_TRNS,
+     KC_TRNS, KC_VOLD, KC_VOLU, KC_MUTE, KC_BRID, KC_BRIU, KC_TRNS,    KC_TRNS, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS, KC_TRNS,
   //|--------+--------+--------+--------+--------+--------+--------'  `--------+--------+--------+--------+--------+--------+--------|
-     KC_TRNS, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,               KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, KC_TRNS,
+     KC_TRNS, KC_MPRV, KC_MPLY, KC_MNXT, KC_NO,   KC_NO,               KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, KC_TRNS,
   //|--------+--------+--------+--------+--------+--------+--------.  ,--------+--------+--------+--------+--------+--------+--------|
                                          KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS
                                       //`--------------------------'  `--------------------------'
