@@ -104,17 +104,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
 
         switch(keycode) {
-            case KC_A:
+            case KC_LBRC:
                 if (get_mods() & MOD_MASK_ALT) {
                     if (get_mods() & MOD_MASK_SHIFT) {
-                        tap_code16(NO_AE_UP);
+                        tap_code16(NO_AA_UP);
                     } else {
-                        tap_code16(NO_AE);
+                        tap_code16(NO_AA);
                     }
                     return false;
                 }
                 break;
-            case KC_O:
+            case KC_SCLN:
                 if (get_mods() & MOD_MASK_ALT) {
                     if (get_mods() & MOD_MASK_SHIFT) {
                         tap_code16(NO_OE_UP);
@@ -124,12 +124,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     return false;
                 }
                 break;
-            case KC_P:
+            case KC_QUOT:
                 if (get_mods() & MOD_MASK_ALT) {
                     if (get_mods() & MOD_MASK_SHIFT) {
-                        tap_code16(NO_AA_UP);
+                        tap_code16(NO_AE_UP);
                     } else {
-                        tap_code16(NO_AA);
+                        tap_code16(NO_AE);
                     }
                     return false;
                 }
