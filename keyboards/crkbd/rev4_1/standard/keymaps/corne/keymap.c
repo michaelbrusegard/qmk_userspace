@@ -3,7 +3,7 @@
 enum layers {
   _BAS,
   _NUM,
-  _SPE
+  _SYM
 };
 
 #define NO_AE RALT(KC_QUOT)    // æ
@@ -22,44 +22,38 @@ enum layers {
 #define HOME_L RALT_T(KC_L)
 #define HOME_SCLN RCTL_T(KC_SCLN)
 
-#define RS_EXLM RSFT(KC_1)
-#define RS_AT RSFT(KC_2)
-#define RS_HASH RSFT(KC_3)
-#define RS_DLR RSFT(KC_4)
-#define RS_PERC RSFT(KC_5)
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BAS] = LAYOUT_split_3x6_3_ex2(
   //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
-     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_NO,      KC_NO   ,KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
+     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_LEFT,    KC_UP,   KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-     KC_ESC,  HOME_A,  HOME_S,  HOME_D,  HOME_F,  KC_G,    KC_NO,      KC_NO,   KC_H,    HOME_J,  HOME_K,  HOME_L, HOME_SCLN,KC_QUOT,
+     KC_ESC,  HOME_A,  HOME_S,  HOME_D,  HOME_F,  KC_G,    KC_RIGHT,   KC_DOWN, KC_H,    HOME_J,  HOME_K,  HOME_L,  HOME_SCLN,KC_QUOT,
   //|--------+--------+--------+--------+--------+--------+--------'  `--------+--------+--------+--------+--------+--------+--------|
-     KC_GRV,   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,
+     KC_GRV,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------.  ,--------+--------+--------+--------+--------+--------+--------|
-                                         MO(_SPE),MO(_NUM),KC_SPC,     KC_SPC,  MO(_NUM), MO(_SPE)
+                                         KC_NO,   MO(_NUM),KC_SPC,     KC_SPC,  MO(_SYM), KC_NO
                                       //`--------------------------'  `--------------------------'
   ),
 
   [_NUM] = LAYOUT_split_3x6_3_ex2(
   //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
-     KC_TRNS, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_TRNS,    KC_TRNS, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_TRNS,
+     KC_TRNS, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_TRNS,    KC_TRNS, KC_SLSH, KC_7,    KC_8,    KC_9,    KC_MINS, KC_TRNS,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-     KC_TRNS, KC_LCTL, KC_LALT, KC_LSFT, KC_LGUI, KC_NO,   KC_TRNS,    KC_TRNS, KC_NO,   KC_RGUI, KC_RSFT, KC_RALT, KC_RCTL, KC_TRNS,
+     KC_TRNS, KC_LCTL, KC_LALT, KC_LSFT, KC_LGUI, KC_NO,   KC_TRNS,    KC_TRNS, KC_ASTR, KC_4,    KC_5,    KC_6,    KC_PLUS, KC_TRNS,
   //|--------+--------+--------+--------+--------+--------+--------'  `--------+--------+--------+--------+--------+--------+--------|
-     KC_TRNS, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_TRNS,
+     KC_TRNS, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                        KC_COMM, KC_1,    KC_2,    KC_3,    KC_DOT,  KC_TRNS,
   //|--------+--------+--------+--------+--------+--------+--------.  ,--------+--------+--------+--------+--------+--------+--------|
-                                         KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS
+                                         KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_0
                                       //`--------------------------'  `--------------------------'
   ),
 
-  [_SPE] = LAYOUT_split_3x6_3_ex2(
+  [_SYM] = LAYOUT_split_3x6_3_ex2(
   //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
-     KC_TRNS, RS_EXLM, RS_AT,   RS_HASH, RS_DLR,  RS_PERC, KC_TRNS,    KC_TRNS, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_TRNS,
+     KC_TRNS, KC_DEL,  KC_NO,   KC_LPRN, KC_RPRN, KC_BSLS, KC_TRNS,    KC_TRNS, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_TRNS,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-     KC_TRNS, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_TRNS,    KC_TRNS, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS, KC_TRNS,
+     KC_TRNS, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_NO,   KC_TRNS,    KC_TRNS, KC_NO,   KC_RGUI, KC_RSFT, KC_RALT, KC_RCTL, KC_TRNS,
   //|--------+--------+--------+--------+--------+--------+--------'  `--------+--------+--------+--------+--------+--------+--------|
-     KC_TRNS, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                        KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, KC_TRNS,
+     KC_TRNS, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_SECT,                      KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_TRNS,
   //|--------+--------+--------+--------+--------+--------+--------.  ,--------+--------+--------+--------+--------+--------+--------|
                                          KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS
                                       //`--------------------------'  `--------------------------'
@@ -85,26 +79,29 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     } else {
                         tap_code16(NO_AA);
                     }
+                    unregister_mods(MOD_MASK_ALT | MOD_MASK_SHIFT);
                     return false;
                 }
                 break;
             case KC_SCLN:
-                if (get_mods() & MOD_MASK_ALT) {
+                 if (!(get_mods() & MOD_BIT(KC_RCTL)) && (get_mods() & MOD_MASK_ALT)) {
                     if (get_mods() & MOD_MASK_SHIFT) {
                         tap_code16(NO_OE_UP);
                     } else {
                         tap_code16(NO_OE);
                     }
+                    unregister_mods(MOD_MASK_ALT | MOD_MASK_SHIFT);
                     return false;
                 }
                 break;
             case KC_QUOT:
-                if (get_mods() & MOD_MASK_ALT) {
+                 if (!(get_mods() & MOD_BIT(KC_RALT)) && (get_mods() & MOD_MASK_ALT)) {
                     if (get_mods() & MOD_MASK_SHIFT) {
                         tap_code16(NO_AE_UP);
                     } else {
                         tap_code16(NO_AE);
                     }
+                    unregister_mods(MOD_MASK_ALT | MOD_MASK_SHIFT);
                     return false;
                 }
                 break;
