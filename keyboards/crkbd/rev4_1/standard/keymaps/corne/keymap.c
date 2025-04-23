@@ -6,12 +6,12 @@ enum layers {
   _SYM
 };
 
-#define NO_AE RALT(KC_QUOT)    // æ
-#define NO_OE RALT(KC_SCLN)    // ø
-#define NO_AA RALT(KC_LBRC)    // å
-#define NO_AE_UP RALT(S(KC_QUOT))  // Æ
-#define NO_OE_UP RALT(S(KC_SCLN))  // Ø
-#define NO_AA_UP RALT(S(KC_LBRC))  // Å
+#define NO_AE RALT(KC_QUOT) // æ
+#define NO_OE RALT(KC_O) // ø
+#define NO_AA RALT(KC_A) // å
+#define NO_AE_UP RALT(S(KC_QUOT)) // Æ
+#define NO_OE_UP RALT(S(KC_O)) // Ø
+#define NO_AA_UP RALT(S(KC_A)) // Å
 
 #define HOME_A LCTL_T(KC_A)
 #define HOME_S LALT_T(KC_S)
@@ -72,7 +72,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
 
         switch(keycode) {
-            case KC_LBRC:
+            case KC_A:
                 if (get_mods() & MOD_MASK_ALT) {
                     if (get_mods() & MOD_MASK_SHIFT) {
                         tap_code16(NO_AA_UP);
@@ -83,8 +83,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     return false;
                 }
                 break;
-            case KC_SCLN:
-                 if (!(get_mods() & MOD_BIT(KC_RCTL)) && (get_mods() & MOD_MASK_ALT)) {
+            case KC_O:
+                if (get_mods() & MOD_MASK_ALT) {
                     if (get_mods() & MOD_MASK_SHIFT) {
                         tap_code16(NO_OE_UP);
                     } else {
@@ -95,7 +95,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 }
                 break;
             case KC_QUOT:
-                 if (!(get_mods() & MOD_BIT(KC_RALT)) && (get_mods() & MOD_MASK_ALT)) {
+                if (get_mods() & MOD_MASK_ALT) {
                     if (get_mods() & MOD_MASK_SHIFT) {
                         tap_code16(NO_AE_UP);
                     } else {
