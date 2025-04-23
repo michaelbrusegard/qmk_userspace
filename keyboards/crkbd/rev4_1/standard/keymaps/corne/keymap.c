@@ -6,13 +6,6 @@ enum layers {
   _SYM
 };
 
-#define NO_AE ALGR(KC_QUOT) // æ
-#define NO_OE ALGR(KC_O)    // ø
-#define NO_AA ALGR(KC_A)    // å
-#define NO_AE_UP ALGR(S(KC_QUOT)) // Æ
-#define NO_OE_UP ALGR(S(KC_O))    // Ø
-#define NO_AA_UP ALGR(S(KC_A))    // Å
-
 #define HOME_A LCTL_T(KC_A)
 #define HOME_S LALT_T(KC_S)
 #define HOME_D LSFT_T(KC_D)
@@ -71,51 +64,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
         }
 
-        uint8_t mods = get_mods();
-        switch(keycode) {
-            case KC_A:
-                if (mods & MOD_MASK_ALT) {
-                    uint8_t temp_mods = mods & (MOD_MASK_SHIFT);
-                    clear_mods();
-                    set_mods(temp_mods);
-                    if (mods & MOD_MASK_SHIFT) {
-                        tap_code16(NO_AA_UP);
-                    } else {
-                        tap_code16(NO_AA);
-                    }
-                    set_mods(mods);
-                    return false;
-                }
-                break;
-            case KC_O:
-                if (mods & MOD_MASK_ALT) {
-                    uint8_t temp_mods = mods & (MOD_MASK_SHIFT);
-                    clear_mods();
-                    set_mods(temp_mods);
-                    if (mods & MOD_MASK_SHIFT) {
-                        tap_code16(NO_OE_UP);
-                    } else {
-                        tap_code16(NO_OE);
-                    }
-                    set_mods(mods);
-                    return false;
-                }
-                break;
-            case KC_QUOT:
-                if (mods & MOD_MASK_ALT) {
-                    uint8_t temp_mods = mods & (MOD_MASK_SHIFT);
-                    clear_mods();
-                    set_mods(temp_mods);
-                    if (mods & MOD_MASK_SHIFT) {
-                        tap_code16(NO_AE_UP);
-                    } else {
-                        tap_code16(NO_AE);
-                    }
-                    set_mods(mods);
-                    return false;
-                }
-                break;
-        }
     }
     return true;
 }
