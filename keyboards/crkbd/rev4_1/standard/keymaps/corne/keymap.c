@@ -6,12 +6,12 @@ enum layers {
   _SYM
 };
 
-#define NO_AE RALT(KC_QUOT) // æ
-#define NO_OE RALT(KC_O) // ø
-#define NO_AA RALT(KC_A) // å
-#define NO_AE_UP RALT(S(KC_QUOT)) // Æ
-#define NO_OE_UP RALT(S(KC_O)) // Ø
-#define NO_AA_UP RALT(S(KC_A)) // Å
+#define NO_AE ALGR(KC_QUOT) // æ
+#define NO_OE ALGR(KC_O)    // ø
+#define NO_AA ALGR(KC_A)    // å
+#define NO_AE_UP ALGR(S(KC_QUOT)) // Æ
+#define NO_OE_UP ALGR(S(KC_O))    // Ø
+#define NO_AA_UP ALGR(S(KC_A))    // Å
 
 #define HOME_A LCTL_T(KC_A)
 #define HOME_S LALT_T(KC_S)
@@ -31,7 +31,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------+--------'  `--------+--------+--------+--------+--------+--------+--------|
      KC_GRV,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------.  ,--------+--------+--------+--------+--------+--------+--------|
-                                         KC_NO,   MO(_NUM),KC_BSPC,    KC_SPC,  MO(_SYM), KC_NO
+                                         MO(_NUM),KC_BSPC, KC_SPC,     KC_SPC,  KC_BSPC, MO(_SYM)
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -71,41 +71,50 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
         }
 
+        uint8_t mods = get_mods();
         switch(keycode) {
             case KC_A:
-                if (get_mods() & MOD_MASK_ALT) {
-                    if (get_mods() & MOD_MASK_SHIFT) {
+                if (mods & MOD_MASK_ALT) {
+                    uint8_t temp_mods = mods & (MOD_MASK_SHIFT);
+                    clear_mods();
+                    set_mods(temp_mods);
+                    if (mods & MOD_MASK_SHIFT) {
                         tap_code16(NO_AA_UP);
                     } else {
                         tap_code16(NO_AA);
                     }
-                    unregister_mods(MOD_MASK_ALT | MOD_MASK_SHIFT);
+                    set_mods(mods);
                     return false;
                 }
                 break;
             case KC_O:
-                if (get_mods() & MOD_MASK_ALT) {
-                    if (get_mods() & MOD_MASK_SHIFT) {
+                if (mods & MOD_MASK_ALT) {
+                    uint8_t temp_mods = mods & (MOD_MASK_SHIFT);
+                    clear_mods();
+                    set_mods(temp_mods);
+                    if (mods & MOD_MASK_SHIFT) {
                         tap_code16(NO_OE_UP);
                     } else {
                         tap_code16(NO_OE);
                     }
-                    unregister_mods(MOD_MASK_ALT | MOD_MASK_SHIFT);
+                    set_mods(mods);
                     return false;
                 }
                 break;
             case KC_QUOT:
-                if (get_mods() & MOD_MASK_ALT) {
-                    if (get_mods() & MOD_MASK_SHIFT) {
+                if (mods & MOD_MASK_ALT) {
+                    uint8_t temp_mods = mods & (MOD_MASK_SHIFT);
+                    clear_mods();
+                    set_mods(temp_mods);
+                    if (mods & MOD_MASK_SHIFT) {
                         tap_code16(NO_AE_UP);
                     } else {
                         tap_code16(NO_AE);
                     }
-                    unregister_mods(MOD_MASK_ALT | MOD_MASK_SHIFT);
+                    set_mods(mods);
                     return false;
                 }
                 break;
-        }
     }
     return true;
 }
