@@ -61,6 +61,12 @@ This can also be used to control which fork is used, though only upstream `qmk_f
 
 ## Commands
 
+Setup QMK:
+
+```bash
+qmk setup
+```
+
 Compile corne:
 
 ```bash
