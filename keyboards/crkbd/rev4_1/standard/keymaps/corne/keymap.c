@@ -1,7 +1,7 @@
 #include QMK_KEYBOARD_H
 
 enum layers {
-  _BAS,
+  _BASE,
   _NUM,
   _SYM,
   _FN
@@ -17,7 +17,7 @@ enum layers {
 #define HOME_SCLN RCTL_T(KC_SCLN)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [_BAS] = LAYOUT_split_3x6_3_ex2(
+  [_BASE] = LAYOUT_split_3x6_3_ex2(
   //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
      KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_LEFT,    KC_UP,   KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -35,7 +35,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
      KC_TRNS, KC_LCTL, KC_LALT, KC_LSFT, KC_LGUI, KC_NO,   KC_NO,      KC_NO,   KC_ASTR, KC_4,    KC_5,    KC_6,    KC_PLUS, KC_EQL,
   //|--------+--------+--------+--------+--------+--------+--------'  `--------+--------+--------+--------+--------+--------+--------|
-     KC_TRNS, KC_NO,   KC_NO,   KC_NO,   MO(_FUN),KC_NO,                        KC_COMM, KC_1,    KC_2,    KC_3,    KC_DOT,  KC_TRNS,
+     KC_TRNS, KC_NO,   KC_NO,   KC_NO,   MO(_FN),KC_NO,                        KC_COMM, KC_1,    KC_2,    KC_3,    KC_DOT,  KC_TRNS,
   //|--------+--------+--------+--------+--------+--------+--------.  ,--------+--------+--------+--------+--------+--------+--------|
                                          KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_0
                                       //`--------------------------'  `--------------------------'
