@@ -60,7 +60,5 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 void keyboard_post_init_user(void) {
-    rgb_matrix_mode(RGB_MATRIX_GRADIENT_LEFT_RIGHT);
-    rgb_matrix_sethsv(38, 220, 120);
-    rgb_matrix_set_speed(96);
+    rgb_matrix_mode_noeeprom(RGB_MATRIX_CUSTOM_NOISE);
 }
