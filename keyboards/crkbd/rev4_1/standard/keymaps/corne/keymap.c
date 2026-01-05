@@ -1,10 +1,10 @@
 #include QMK_KEYBOARD_H
 
 enum layers {
-  _BAS,
+  _BASE,
   _NUM,
   _SYM,
-  _FUN
+  _FN
 };
 
 #define HOME_A LCTL_T(KC_A)
@@ -17,7 +17,7 @@ enum layers {
 #define HOME_SCLN RCTL_T(KC_SCLN)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [_BAS] = LAYOUT_split_3x6_3_ex2(
+  [_BASE] = LAYOUT_split_3x6_3_ex2(
   //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
      KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_LEFT,    KC_UP,   KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -53,11 +53,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       //`--------------------------'  `--------------------------'
   ),
 
-  [_FUN] = LAYOUT_split_3x6_3_ex2(
+  [_FN] = LAYOUT_split_3x6_3_ex2(
   //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
      KC_TRNS, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_NO,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_TRNS,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-     KC_TRNS, KC_LCTL, KC_LALT, KC_LSFT, KC_LGUI,   KC_NO,   KC_NO,      KC_NO,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_TRNS,
+     KC_TRNS, KC_LCTL, KC_LALT, KC_LSFT, KC_LGUI, KC_NO,   KC_NO,      KC_NO,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_TRNS,
   //|--------+--------+--------+--------+--------+--------+--------'  `--------+--------+--------+--------+--------+--------+--------|
      KC_TRNS, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                        KC_F11,  KC_F12,  KC_F13,  KC_F14,  KC_F15,  KC_TRNS,
   //|--------+--------+--------+--------+--------+--------+--------.  ,--------+--------+--------+--------+--------+--------+--------|
@@ -86,8 +86,3 @@ void keyboard_post_init_user(void) {
     rgb_matrix_mode(RGB_MATRIX_SOLID_COLOR);
     rgb_matrix_sethsv(0, 0, 255);
 }
-
-
-// 255, 227, 0
-// 127, 0, 255
-
