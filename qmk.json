@@ -1,8 +1,13 @@
 {
     "userspace_version": "1.1",
     "build_targets": [
-        ["crkbd/rev4_1/standard", "corne"],
-        ["lily58/rev1", "lily"],
-        ["lily58/glow_enc", "lily"]
+        [
+            "crkbd/rev4_1/standard",
+            "corne"
+        ],
+        [
+            "boardsource/lulu/rp2040",
+            "lily"
+        ]
     ]
 }
