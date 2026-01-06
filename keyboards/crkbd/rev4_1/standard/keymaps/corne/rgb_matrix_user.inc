@@ -15,12 +15,12 @@ static bool NOISE(effect_params_t *params) {
         boot_timer = timer_read();
     }
 
-    if (led_min == 0) {
+    if (params->iter == 0) {
         if (timer_elapsed(boot_timer) > 20) {
-            for (uint8_t try = 0; try < 5; try++) {
-                uint8_t rand_idx = random8_max(RGB_MATRIX_LED_COUNT);
-                if (led_boot_state[rand_idx] == 0) {
-                    led_boot_state[rand_idx] = 1;
+            for (uint8_t i = 0; i < 15; i++) {
+                uint8_t target = random8() % RGB_MATRIX_LED_COUNT;
+                if (led_boot_state[target] == 0) {
+                    led_boot_state[target] = 1;
                     boot_timer = timer_read();
                     break;
                 }
@@ -37,7 +37,6 @@ static bool NOISE(effect_params_t *params) {
         }
 
         uint8_t t = timer_read() >> 5;
-
         uint8_t x = g_led_config.point[i].x;
         uint8_t y = g_led_config.point[i].y;
 
@@ -46,7 +45,7 @@ static bool NOISE(effect_params_t *params) {
         uint8_t n  = sin8(wx * 2 + wy * 3 + t);
 
         uint8_t r_raw = lerp8by8(255, 127, n);
-        uint8_t g_raw = lerp8by8(227,   0, n);
+        uint8_t g_raw = lerp8by8(100,   0, n);
         uint8_t b_raw = lerp8by8(  0, 255, n);
 
         uint8_t power_limit = 110;
