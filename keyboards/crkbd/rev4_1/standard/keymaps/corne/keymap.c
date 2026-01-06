@@ -82,33 +82,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
-bool rgb_matrix_indicators_user(void) {
-    static uint8_t t = 0;
-    static uint8_t tick = 0;
-
-    tick++;
-    if ((tick & 1) == 0) {
-        t++;
-    }
-
-    for (uint8_t i = 0; i < RGB_MATRIX_LED_COUNT; i++) {
-        if (!HAS_FLAGS(g_led_config.flags[i], LED_FLAG_KEYLIGHT)) {
-            continue;
-        }
-
-        uint8_t x = g_led_config.point[i].x;
-        uint8_t y = g_led_config.point[i].y;
-
-        uint8_t wx = x + (sin8(y * 2 + t) >> 3);
-        uint8_t wy = y + (sin8(x * 2 + t * 2) >> 3);
-        uint8_t n = sin8(wx * 2 + wy * 3 + t);
-
-        uint8_t r = lerp8by8(255, 127, n);
-        uint8_t g = lerp8by8(227, 0, n);
-        uint8_t b = lerp8by8(0, 255, n);
-
-        rgb_matrix_set_color(i, r, g, b);
-    }
-
-    return false;
+void keyboard_post_init_user(void) {
+    rgb_matrix_mode_noeeprom(RGB_MATRIX_CUSTOM_NOISE);
 }
